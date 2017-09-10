@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+  http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan base-package="org.firstonlineuniversity" />	
+	<context:property-placeholder location="classpath:database.dev.properties" />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:annotation-driven />
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${database.driver}" />
+		<property name="jdbcUrl" value="${database.url}" />
+		<property name="user" value="${database.user}" />
+		<property name="password" value="${database.password}" />
+
+		<!-- Below configuration sets poolsize between 3-20. Idle connections are 
+			re-tested every 5 minutes to keep them active. Because of idleConnectionTestPeriod, 
+			this will only keep the the minumum number of connections alive. If there 
+			are more than 3 connections at the 4-minute mark, it kills those connections 
+			freeing resources back to the minimum. Use of maxIdleTimeExcessConnections 
+			and idleConnectionTestPeriod negates the need for maxIdleTime -->
+		<!-- these are C3P0 properties -->
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="20" />
+		<property name="acquireIncrement" value="1" />
+		<property name="testConnectionOnCheckin" value="true" />
+		<property name="idleConnectionTestPeriod" value="300" />
+		<property name="maxIdleTimeExcessConnections" value="240" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>org.firstonlineuniversity.models.login.Accounts</value>
+				<value>org.firstonlineuniversity.models.login.UserRole</value>
+				<value>org.firstonlineuniversity.models.courses.CourseInformation
+				</value>
+				<value>org.firstonlineuniversity.models.courses.Category
+				</value>
+				<value>org.firstonlineuniversity.models.courses.SubjectArea
+				</value>
+				<value>org.firstonlineuniversity.models.courses.CourseProviders
+				</value>
+				<value>org.firstonlineuniversity.models.courses.Providers
+				</value>
+				<value>org.firstonlineuniversity.models.profiles.Profiles</value>
+				<value>org.firstonlineuniversity.models.profiles.Organization
+				</value>
+				<value>org.firstonlineuniversity.domains.custom.CustomCoursesFilterNav
+				</value>
+				<value>org.firstonlineuniversity.models.courses.CourseSections
+				</value>
+				<value>org.firstonlineuniversity.models.courses.CourseLectures
+				</value>
+				<value>org.firstonlineuniversity.models.courses.CourseContent
+				</value>
+				<value>org.firstonlineuniversity.models.courses.CourseResources
+				</value>
+				<value>org.firstonlineuniversity.models.courses.QuizInformation
+				</value>
+				<value>org.firstonlineuniversity.models.courses.QuickCodes
+				</value>
+				<value>org.firstonlineuniversity.models.courses.UserContent
+				</value>
+				<value>org.firstonlineuniversity.models.courses.QuizQuestions
+				</value>
+				<value>org.firstonlineuniversity.models.courses.QuizQuestionsOptions
+				</value>
+				<value>org.firstonlineuniversity.models.courses.UserPrograms
+				</value>
+				<value>org.firstonlineuniversity.models.courses.UserProgramCources
+				</value>
+				<value>org.firstonlineuniversity.models.payment.Cards
+				</value>
+				<value>org.firstonlineuniversity.models.enrollements.UniversityMembership
+				</value>
+				<value>org.firstonlineuniversity.models.enrollements.CoursesEnrollements
+				</value>
+				<value>org.firstonlineuniversity.models.views.CourseContentsView
+				</value>
+				<value>org.firstonlineuniversity.models.views.CourseLecturesQuiz
+				</value>
+				<value>org.firstonlineuniversity.models.views.CourseLecturesView
+				</value>
+				<value>org.firstonlineuniversity.models.views.CourseResourcesView
+				</value>
+				<value>org.firstonlineuniversity.models.views.CourseSectionsQuiz
+				</value>
+				<value>org.firstonlineuniversity.models.views.CourseSectionsView
+				</value>
+				<value>org.firstonlineuniversity.models.courses.CoursePrices
+				</value>
+				<value>org.firstonlineuniversity.models.courses.CourseStatuses
+				</value>
+				<value>org.firstonlineuniversity.models.views.CourseCatalogView
+				</value>
+				<value>org.firstonlineuniversity.models.courses.Tags
+				</value>
+				<value>org.firstonlineuniversity.models.courses.CoursesTags </value>
+				<value>org.firstonlineuniversity.models.courses.CoursesCategories </value>
+				<value>org.firstonlineuniversity.models.courses.QuizAttempts </value>
+				<value>org.firstonlineuniversity.models.courses.QuizHistory </value>
+				<value>org.firstonlineuniversity.models.views.SiteSummaryView
+				</value>
+				<value>org.firstonlineuniversity.models.views.ProviderSummaryView
+				</value>
+				<value>org.firstonlineuniversity.models.payment.PaymentTransactions
+				</value>
+				<value>org.firstonlineuniversity.models.payment.PaymentRequest
+				</value>
+				<value>org.firstonlineuniversity.models.payment.PaymentBatch
+				</value>
+				<value>org.firstonlineuniversity.models.payment.BankAccount
+				</value>
+				<value>org.firstonlineuniversity.models.payment.PaymentRemittence
+				</value>
+				<value>org.firstonlineuniversity.models.courses.QuizAttemptDetails
+				</value>
+				<value>org.firstonlineuniversity.models.profiles.Settings</value>
+				<value>org.firstonlineuniversity.models.courses.ContentCaptions
+				</value>
+				<value>org.firstonlineuniversity.models.courses.CoursePerformance
+				</value>
+				<value>org.firstonlineuniversity.models.payment.ExchangeRates
+				</value>
+				<value>org.firstonlineuniversity.models.event.Event</value>
+				<value>org.firstonlineuniversity.models.event.EventRegistration
+				</value>
+				<value>org.firstonlineuniversity.models.localization.Localization
+				</value>
+				<value>org.firstonlineuniversity.models.localization.Language
+				</value>
+				<value>org.firstonlineuniversity.models.localization.Country</value>
+				<value>org.firstonlineuniversity.models.certificate.Certificate</value>
+				<value>org.firstonlineuniversity.models.certificate.CertificateDetail</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+				</prop>
+				<prop key="net.sf.ehcache.configurationResourceName">ouehcache.xml</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="persistenceExceptionTranslationPostProcessor"
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/views/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+
+	<!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
+		<property name="host" value="smtp.gmail.com" /> <property name="port" value="587" 
+		/> <property name="username" value="techburps@gmail.com" /> <property name="password" 
+		value="soft@WARE2" /> <property name="defaultEncoding" value="UTF-8" /> <property 
+		name="javaMailProperties"> <props> <prop key="mail.transport.protocol">smtp</prop> 
+		<prop key="mail.smtp.auth">true</prop> <prop key="mail.smtp.starttls.enable">true</prop> 
+		<prop key="mail.debug">true</prop> </props> </property> </bean> -->
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${smtp.host}" />
+		<property name="port" value="${smtp.port}" />
+		<property name="username" value="${smtp.username}" />
+		<property name="password" value="${smtp.password}" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+</beans>
