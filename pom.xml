@@ -347,9 +347,15 @@
 			<version>1.7.12</version>
 		</dependency>
 	</dependencies>
+	
 	<scm>
+   <connection>scm:git:git@github.com:rohitkumarlohiya/SpringHibernate.git</connection>
+   <url>scm:git:git@github.com:rohitkumarlohiya/SpringHibernate.git</url>
+   <developerConnection>scm:git:git@github.com:rohitkumarlohiya/SpringHibernate.git</developerConnection>
+</scm>
+	<!-- <scm>
    <connection>scm:git:https://github.com/rohitkumarlohiya/SpringHibernate.git</connection>
    <url>https://github.com/rohitkumarlohiya/SpringHibernate</url>
    <developerConnection>scm:git:https://github.com/rohitkumarlohiya/SpringHibernate.git</developerConnection>
-</scm>
+</scm> -->
 </project>
