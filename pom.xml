@@ -4,7 +4,7 @@
 	<groupId>org.mcloud.portal</groupId>
 	<artifactId>Mcloud</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>Mcloud Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
@@ -350,13 +350,8 @@
 	</dependencies>
 	
 	<scm>
-   <connection>scm:git:git@github.com:rohitkumarlohiya/SpringHibernate.git</connection>
-   <url>scm:git:git@github.com:rohitkumarlohiya/SpringHibernate.git</url>
-   <developerConnection>scm:git:git@github.com:rohitkumarlohiya/SpringHibernate.git</developerConnection>
-</scm>
-	<!-- <scm>
    <connection>scm:git:https://github.com/rohitkumarlohiya/SpringHibernate.git</connection>
-   <url>https://github.com/rohitkumarlohiya/SpringHibernate</url>
+   <url>http://github.com/rohitkumarlohiya/SpringHibernate</url>
    <developerConnection>scm:git:https://github.com/rohitkumarlohiya/SpringHibernate.git</developerConnection>
-</scm> -->
+</scm>
 </project>
