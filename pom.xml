@@ -350,7 +350,7 @@
 	</dependencies>
 	
 	<scm>
-  <connection>scm:git:ssh://github.com/rohitkumarlohiya/SpringHibernate.git</connection>
+  <connection>scm:git:git@github.com/rohitkumarlohiya/SpringHibernate.git</connection>
   <developerConnection>scm:git:git@github.com/rohitkumarlohiya/SpringHibernate.git</developerConnection>
   <url>ssh://github.com/rohitkumarlohiya/SpringHibernate</url>
   <tag>HEAD</tag>
