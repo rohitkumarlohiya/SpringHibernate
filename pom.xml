@@ -3,7 +3,7 @@
 	<groupId>org.mcloud.portal</groupId>
 	<artifactId>Mcloud</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.4</version>
 	<name>Mcloud Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
@@ -348,6 +348,6 @@
 	
 	<scm>
     <developerConnection>scm:git:https://github.com/rohitkumarlohiya/SpringHibernate.git</developerConnection>
-  <tag>HEAD</tag>
+  <tag>v0.0.4</tag>
   </scm>
 </project>
