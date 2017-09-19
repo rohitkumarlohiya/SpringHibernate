@@ -48,6 +48,19 @@
 	 <repository>
         <id>central</id>
         <name>Lenovo-PC-releases</name>
+        <url>file:///D:/SpringHibernate/release/</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>Lenovo-PC-snapshots</name>
+        <url>file:///D:/SpringHibernate/snapshot/</url>
+    </snapshotRepository>
+</distributionManagement>
+	
+	<!--<distributionManagement>
+	 <repository>
+        <id>central</id>
+        <name>Lenovo-PC-releases</name>
         <url>http://localhost:8081/artifactory/libs-release-local</url>
     </repository>
     <snapshotRepository>
@@ -55,7 +68,7 @@
         <name>Lenovo-PC-snapshots</name>
         <url>http://localhost:8081/artifactory/libs-snapshot-local</url>
     </snapshotRepository>
-</distributionManagement>
+</distributionManagement>-->
 	
 	<build>
 		<!--<finalName>${project.artifactId}</finalName>-->
